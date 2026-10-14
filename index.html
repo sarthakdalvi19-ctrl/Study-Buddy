@@ -1,0 +1,157 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyBuddy | Smart Study Planner</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
+</head>
+<body>
+  <div class="app">
+    <aside class="sidebar">
+      <h2 class="brand">🎓 StudyBuddy</h2>
+      <p class="side-label">YOUR WORKSPACE</p>
+
+      <button class="nav active" data-view="dashboard">🏠 Dashboard</button>
+      <button class="nav" data-view="tasks">📝 My Tasks</button>
+      <button class="nav" data-view="subjects">📚 Subjects</button>
+
+      <div class="side-bottom">
+        <p>Small steps every day lead to big results ✨</p>
+        <button id="themeButton" class="theme-button">🌙 Dark Mode</button>
+      </div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow" id="todayDate">YOUR STUDY SPACE</p>
+          <h1 id="greeting">Welcome back! 👋</h1>
+          <p class="subtitle">Let's make today productive.</p>
+        </div>
+        <div class="date-pill">📅 <span id="dateLabel"></span></div>
+      </header>
+
+      <section class="stats">
+        <article class="stat-card purple">
+          <span class="stat-icon">📋</span>
+          <div><p>Total Tasks</p><h2 id="totalCount">0</h2></div>
+        </article>
+        <article class="stat-card green">
+          <span class="stat-icon">✅</span>
+          <div><p>Completed</p><h2 id="completedCount">0</h2></div>
+        </article>
+        <article class="stat-card orange">
+          <span class="stat-icon">⏳</span>
+          <div><p>Pending</p><h2 id="pendingCount">0</h2></div>
+        </article>
+      </section>
+
+      <section class="progress-card">
+        <div class="progress-heading">
+          <div>
+            <h3>Today's Progress</h3>
+            <p>Every completed task is a win!</p>
+          </div>
+          <strong id="progressPercent">0%</strong>
+        </div>
+        <div class="progress-track">
+          <div id="progressBar" class="progress-bar"></div>
+        </div>
+      </section>
+
+      <section id="addTaskSection" class="panel">
+        <div class="panel-heading">
+          <div>
+            <h2>Add a Study Task</h2>
+            <p>Plan what you want to accomplish.</p>
+          </div>
+        </div>
+
+        <form id="taskForm">
+          <div class="form-grid">
+            <label class="field full">
+              Task name
+              <input id="taskName" type="text"
+                placeholder="e.g. Complete Java assignment" required maxlength="100">
+            </label>
+
+            <label class="field">
+              Subject
+              <select id="taskSubject" required>
+                <option value="Java">Java</option>
+                <option value="DSA">DSA</option>
+                <option value="Database">Database</option>
+                <option value="Web Development">Web Development</option>
+                <option value="College">College</option>
+                <option value="Other">Other</option>
+              </select>
+            </label>
+
+            <label class="field">
+              Priority
+              <select id="taskPriority">
+                <option value="Medium">Medium</option>
+                <option value="High">High</option>
+                <option value="Low">Low</option>
+              </select>
+            </label>
+
+            <label class="field">
+              Due date
+              <input id="taskDate" type="date" required>
+            </label>
+
+            <label class="field">
+              Study time
+              <select id="taskDuration">
+                <option value="30 min">30 minutes</option>
+                <option value="1 hour" selected>1 hour</option>
+                <option value="1.5 hours">1.5 hours</option>
+                <option value="2 hours">2 hours</option>
+                <option value="3 hours">3 hours</option>
+              </select>
+            </label>
+          </div>
+
+          <button class="primary-button" type="submit">＋ Add Task</button>
+          <p id="formMessage" class="form-message" role="status"></p>
+        </form>
+      </section>
+
+      <section id="taskListSection" class="panel">
+        <div class="panel-heading task-heading">
+          <div>
+            <h2 id="taskHeading">My Study Tasks</h2>
+            <p>Keep track of everything you need to do.</p>
+          </div>
+          <select id="taskFilter" aria-label="Filter tasks">
+            <option value="all">All Tasks</option>
+            <option value="pending">Pending</option>
+            <option value="completed">Completed</option>
+          </select>
+        </div>
+
+        <div id="taskList" class="task-list"></div>
+        <p id="emptyMessage" class="empty-message">
+          No tasks yet. Add your first study task above! ✨
+        </p>
+      </section>
+
+      <section id="subjectsSection" class="panel hidden">
+        <div class="panel-heading">
+          <div>
+            <h2>My Subjects 📚</h2>
+            <p>See how you're progressing in each subject.</p>
+          </div>
+        </div>
+        <div id="subjectList" class="subject-list"></div>
+      </section>
+
+      <footer>Made with 💜 for your learning journey · StudyBuddy</footer>
+    </main>
+  </div>
+</body>
+</html>
